@@ -1,0 +1,18 @@
+Installing and configuring Maven on Linux:
+
+Maven depends on java, make sure java is installed.
+sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
+-O /etc/yum.repos.d/epel-apache-maven.repo
+sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+sudo yum install -y apache-maven
+Verifying maven installation
+mvn --version
+
+git clone https://github.com/javahometech/myweb.git
+https://github.com/javahometech/myweb
+
+Skipping test cases in maven(Interview Question)
+mvn package -DskipTests
+
+Inside "myweb" run 
+mvn package -DskipTests

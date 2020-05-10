@@ -1,0 +1,33 @@
+Installing Tomcat on linux machine
+
+- Java is the dependency for tomcat to work
+- Installing java
+- sudo yum install java-1.8.0-openjdk-devel -y
+- cd /opt
+- Download tomcat
+sudo wget
+http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.20/bin/apache-tomcat-8.5.20.tar.gz
+- Untar the file
+sudo tar -xf apache-tomcat-8.5.20.tar.gz
+- Rename the file
+sudo mv apache-tomcat-8.5.20 tomcat8
+- Change the ownership of tomcat to ec2-user
+- sudo chown -R ec2-user:ec2-user tomcat8
+- Starting tomcat server
+${TOMCAT_HOME}/bin/startup.sh
+Note: default port of tomcat is 8080
+- Stopping tomcat server
+${TOMCAT_HOME}/bin/shutdown.sh
+
+Tomcat manager application:
+
+Tomcat manager is the web application, using this we manage applications running on tomcat
+By default access is restricted to this application.
+- Remove the restriction to manager application
+vi /opt/tomcat8/webapps/manager/META-INF/context.xml
+Remove the <Value> …….</Value> from this file.
+- Add user to access tomcat manager application
+vi /opt/tomcat8/conf/tomcat-users.xml
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<user username="javahome" password="javahome" roles="manager-gui,manager-script"/>
